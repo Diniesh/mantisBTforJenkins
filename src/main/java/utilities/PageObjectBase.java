@@ -40,24 +40,26 @@ public class PageObjectBase {
 				: prop.getProperty("browser");
 		return conf2;
 	}
+	
 
 	@BeforeClass
 	public void getDeviceDriver() throws Exception {
 		getBrowser();
+		System.out.println(getBrowser());
 		String conf = Configurations.browserType;
-		if (getBrowser().contentEquals("Firefox")) {
+		if (getBrowser().equalsIgnoreCase("Firefox")) {
 //			System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir") + "\\geckodriver.exe");
 //			WebDriver driver=new FirefoxDriver();
 			WebDriverManager.firefoxdriver().setup();
 			driver = new FirefoxDriver();
 			driver.manage().window().maximize();
 
-		} else if (getBrowser().contentEquals("Chrome")) {
-			System.setProperty("webdriver.chrome.driver3", System.getProperty("user.dir") + "\\chromedriver.exe");
+		} else if (getBrowser().equalsIgnoreCase("Chrome")) {
+//			System.setProperty("webdriver.chrome.driver3", System.getProperty("user.dir") + "\\chromedriver.exe");
 			WebDriverManager.chromedriver().setup();
 			driver = new ChromeDriver();
 			driver.manage().window().maximize();
-		} else if (getBrowser().contentEquals("Edge")) {
+		} else if (getBrowser().equalsIgnoreCase("Edge")) {
 //			System.setProperty("webdriver.ie.driver3", System.getProperty("user.dir") + "\\IEDriverServer.exe");
 			WebDriverManager.edgedriver().setup();
 			driver = new EdgeDriver();
