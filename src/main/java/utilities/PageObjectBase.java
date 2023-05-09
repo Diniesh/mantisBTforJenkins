@@ -54,6 +54,7 @@ public class PageObjectBase {
 
 		} else if (getBrowser().contentEquals("Chrome")) {
 			System.setProperty("webdriver.chrome.driver3", System.getProperty("user.dir") + "\\chromedriver.exe");
+			WebDriverManager.chromedriver().setup();
 			driver = new ChromeDriver();
 			driver.manage().window().maximize();
 		} else if (getBrowser().contentEquals("Edge")) {
